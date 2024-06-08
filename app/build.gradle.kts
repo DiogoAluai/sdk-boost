@@ -8,13 +8,12 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "daluai.lib"
             artifactId = "sdk-boost"
-            version = "1.0.0-SNAPSHOT"
+            version = "1.0.0"
 
             from(components["java"])
         }
     }
 }
-
 
 dependencies {
     compileOnly("com.google.android:android:4.1.1.4")
