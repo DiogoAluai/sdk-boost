@@ -8,7 +8,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "daluai.lib"
             artifactId = "sdk-boost"
-            version = "1.0.1-SNAPSHOT"
+            version = "1.1.0-SNAPSHOT"
 
             from(components["java"])
         }
