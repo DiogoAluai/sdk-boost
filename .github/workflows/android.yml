@@ -2,11 +2,14 @@ name: Android CI
 
 on:
   push:
-    branches: [ "development" ]
+    branches:
+      - "development"
+    tags:
+      - '1.1.0-SNAPSHOT'
 
 jobs:
   build:
-    name: Build jar
+    name: Build and update release jar
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -20,13 +23,10 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: d1ceward/draft-assets-release-action@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          files: |
-            app/build/libs/sdk-boost-1.0.0-SNAPSHOT.jar
-            app/build/libs/app-sources.jar
+    - name: Update release jar
+      uses: d1ceward/draft-assets-release-action@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        files: |
+          app/build/libs/sdk-boost-1.0.0-SNAPSHOT.jar
+          app/build/libs/app-sources.jar
