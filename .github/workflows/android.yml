@@ -30,6 +30,4 @@ jobs:
       with:
         tags: false
         draft: true
-        file:
-          app/build/libs/sdk-boost-1.0.0-SNAPSHOT.jar
-          app/build/libs/app-sources.jar
+        file: "app/build/libs/sdk-boost-1.1.0-SNAPSHOT.jar"
