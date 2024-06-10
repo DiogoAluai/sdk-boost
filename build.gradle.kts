@@ -3,8 +3,7 @@ plugins {
     `maven-publish`
 }
 
-var sdkBoostVersion = "1.1.0-SNAPSHOT"
-var sdkJarName = "sdk-boost"
+version = project.findProperty("version") as String
 
 java {
     // Configuration to specify the jar name
@@ -12,21 +11,12 @@ java {
     withSourcesJar()
 }
 
-tasks.jar {
-    manifest {
-        archiveBaseName.set(sdkJarName)
-        archiveVersion.set(sdkBoostVersion)
-    }
-}
-
-
 publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "daluai.lib"
-            artifactId = sdkJarName
-            version = sdkBoostVersion
-
+            artifactId = project.findProperty("jarName") as String
+            version = project.findProperty("version") as String
             from(components["java"])
         }
     }
