@@ -24,9 +24,12 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: Update release jar
-      uses: d1ceward/draft-assets-release-action@v2
+      uses: xresloader/upload-to-github-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        files: |
+        tags: true
+        draft: true
+        file:
           app/build/libs/sdk-boost-1.0.0-SNAPSHOT.jar
           app/build/libs/app-sources.jar
