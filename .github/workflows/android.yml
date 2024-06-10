@@ -28,7 +28,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tags: true
+        tags: false
         draft: true
         file:
           app/build/libs/sdk-boost-1.0.0-SNAPSHOT.jar
