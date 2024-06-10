@@ -2,8 +2,7 @@ name: Android CI
 
 on:
   push:
-    tags:
-      - '1.1.0-SNAPSHOT'
+    branches: [ "development" ]
 
 jobs:
   build:
