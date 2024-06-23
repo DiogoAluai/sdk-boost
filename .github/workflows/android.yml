@@ -30,7 +30,7 @@ jobs:
 
       - name: Check if release exists
         id: check_release
-        uses: octokit/request-action@v2
+        uses: octokit/request-action@v2.3.1
         with:
           route: GET /repos/:owner/:repo/releases/tags/v${{ env.RELEASE_VERSION }}
           owner: ${{ github.repository_owner }}
