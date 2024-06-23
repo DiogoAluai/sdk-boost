@@ -36,6 +36,8 @@ jobs:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
         continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create or update release
         id: create_release
@@ -66,3 +68,5 @@ jobs:
           asset_path: build/libs/
           asset_name: sdk-boost-${{ env.RELEASE_VERSION }}.jar
           asset_content_type: application/java-archive
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
