@@ -15,11 +15,19 @@ public class ToastHandler {
     private final Handler mainHandler;
     private final Context context;
 
+    /**
+     * Constructor
+     * @param context context on which toasts will be created from
+     */
     public ToastHandler(Context context) {
         this.mainHandler = new Handler(Looper.getMainLooper());
         this.context = context;
     }
 
+    /**
+     * Constructor
+     * @param application app on which toasts will be created from
+     */
     public ToastHandler(Application application) {
         this(application.getApplicationContext());
     }
