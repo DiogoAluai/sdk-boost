@@ -1,3 +1,10 @@
+#
+# On development branch push, the release will be updated/created based on its existence.
+# Current known issues:
+#   - Snapshot versions are not deleted on real release
+#   - Sources zip are only updated when tag release is being created for the first time
+#
+
 name: Gradle Release Workflow
 
 on:
@@ -28,6 +35,26 @@ jobs:
 
       - name: Set release version
         run: echo "RELEASE_VERSION=$(cat gradle.properties | grep version= | cut -d'=' -f2)" >> $GITHUB_ENV
+
+      - name: Check if snapshot release exists
+        id: check_snapshot_release
+        uses: octokit/request-action@v2.3.1
+        with:
+          route: GET /repos/DiogoAluai/sdk-boost/releases/tags/v${{ env.RELEASE_VERSION }}-SNAPSHOT
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Delete existing snapshot release
+        if: steps.check_snapshot_release.outputs.status != '404'
+        run: |
+          release_id=$(echo '${{ steps.check_release.outputs.data }}' | jq -r '.id')
+          curl -X DELETE \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository_owner }}/${{ github.event.repository.name }}/releases/$release_id
 
       - name: Check if release exists
         id: check_release

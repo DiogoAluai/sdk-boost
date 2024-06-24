@@ -6,6 +6,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
+/**
+ * Context aware message Toast handler.
+ */
 @SuppressWarnings("unused")
 public class ToastHandler {
 
