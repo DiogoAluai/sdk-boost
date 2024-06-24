@@ -1,7 +1,6 @@
 #
 # On development branch push, the release will be updated/created based on its existence.
 # Current known issues:
-#   - Snapshot versions are not deleted on real release
 #   - Sources zip are only updated when tag release is being created for the first time
 #
 
