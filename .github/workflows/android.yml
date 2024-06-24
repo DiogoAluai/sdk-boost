@@ -1,7 +1,6 @@
 #
 # On development branch push, the release will be updated/created based on its existence.
 # Current known issues:
-#   - Snapshot versions are not deleted on real release
 #   - Sources zip are only updated when tag release is being created for the first time
 #
 
@@ -50,7 +49,7 @@ jobs:
       - name: Delete existing snapshot release
         if: steps.check_snapshot_release.outputs.status != '404'
         run: |
-          release_id=$(echo '${{ steps.check_release.outputs.data }}' | jq -r '.id')
+          release_id=$(echo '${{ steps.check_snapshot_release.outputs.data }}' | jq -r '.id')
           curl -X DELETE \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
