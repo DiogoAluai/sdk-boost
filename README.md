@@ -1,10 +1,30 @@
 # Logger
-Wrapper of android logger that removes hassle of specifying the tag over and over again.
+Wrapper of Android logger that removes the hassle of specifying the tag repeatedly.
 
-# Repository
-It's not published anywhere.
-To use it, first publish it to local maven repository: `gradle assemble app:publishToMavenLocal` and then import it to android project.
-Import example for gradle kts: 
+# Adding dependency - gradle
+Add jitpack dependency resolution in `settings.gradle.kts`:
+```
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        mavenLocal()
+        maven { setUrl("https://jitpack.io") } // <= add jitpack resolution
+    }
+}
+```
+Then add the dependency in `build.gradle.kts` (Module App):
+```
+dependencies {
+    ...
+    implementation("com.github.DiogoAluai:sdk-boost:1.1")
+    ...
+}
+```
+
+
+Or you could first publish it to a maven repository with `gradle assemble app:publishToMavenLocal`, and then import it to Android project:
 ```
 dependencies {
     ...
