@@ -3,7 +3,6 @@ package daluai.app.sdk_boost.wrapper;
 import android.util.Log;
 
 /**
- * Aluai Log, developed by Diogo Aluai.
  * Reduces the hassle of logging by setting up a tag with simple name of provided class.
  */
 @SuppressWarnings("unused")
