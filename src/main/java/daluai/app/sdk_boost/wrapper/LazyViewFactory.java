@@ -22,7 +22,7 @@ public class LazyViewFactory {
     /**
      * Create lazy view for given id.
      */
-    <T extends View> LazyView<T> createView(int viewId) {
+    public <T extends View> LazyView<T> createView(int viewId) {
         return new LazyView<>(activity, viewId);
     }
 }
