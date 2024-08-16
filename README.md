@@ -18,7 +18,7 @@ Then add the dependency in `build.gradle.kts` (Module App):
 ```
 dependencies {
     ...
-    implementation("com.github.DiogoAluai:sdk-boost:1.1")
+    implementation("com.github.DiogoAluai:sdk-boost:1.1.0")
     ...
 }
 ```
