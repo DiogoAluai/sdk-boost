@@ -2,7 +2,7 @@
 Wrapper of Android logger that removes the hassle of specifying the tag repeatedly.
 
 # Adding dependency - gradle
-Add jitpack dependency resolution in `settings.gradle.kts`:
+Add [jitpack](https://jitpack.io/#DiogoAluai/sdk-boost/) dependency resolution in `settings.gradle.kts`:
 ```
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
