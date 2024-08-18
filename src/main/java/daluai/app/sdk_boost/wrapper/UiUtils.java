@@ -51,7 +51,7 @@ public final class UiUtils {
     public static void clearFocusIfClickedAway(Activity activity, MotionEvent event, Class<?> componentClass) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             View v = activity.getCurrentFocus();
-            if (componentClass.isAssignableFrom(v.getClass())) {
+            if (v!= null && componentClass.isAssignableFrom(v.getClass())) {
                 Rect outRect = new Rect();
                 v.getGlobalVisibleRect(outRect);
                 if (!outRect.contains((int) event.getRawX(), (int) event.getRawY())) {
