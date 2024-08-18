@@ -46,16 +46,7 @@ public final class UiUtils {
 
     /**
      * Clear focus from components of given class, whenever user clicks away.
-     * Use it under the dispatchTouchEvent method:
-     * <pre>
-     * {@code
-     *      @Override
-     *      public boolean dispatchTouchEvent(MotionEvent event) {
-     *          UiUtils.clearFocusIfClickedAway(this, event)
-     *          return super.dispatchTouchEvent(event);
-     *      }
-     * }
-     * </pre>
+     * Usage example: override dispatchTouchEvent and call this function before returning super.
      */
     public static void clearFocusIfClickedAway(Activity activity, MotionEvent event, Class<?> componentClass) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {

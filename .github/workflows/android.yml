@@ -25,9 +25,11 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
+      # -- BUILD
       - name: Build with Gradle
         run: ./gradlew build
 
+      #  -- VERSION RETRIEVAL
       - name: Retrieve Gradle version
         id: gradle_version
         run: ./gradlew properties -q | grep "version:" | awk '{print $2}'
