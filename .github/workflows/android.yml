@@ -3,7 +3,15 @@
 # Current known issues:
 #   - Sources zip are only updated when tag release is being created for the first time
 #
+# For gradle example check github.com/DiogoAluai/sdk-boost
+#
+# To adapt to other usages:
+#   - check comments starting with "--"
+#   - verify javadoc and sources jar are being generated
+#   - change repository name everywhere and jar location references
+#   - for maven wrapper creation run: mvn -N io.takari:maven:wrapper
 
+# -- NAME
 name: Gradle Release Workflow
 
 on:
@@ -19,6 +27,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+      # -- JDK
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
@@ -29,11 +38,12 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      #  -- VERSION RETRIEVAL
-      - name: Retrieve Gradle version
+      #  -- VERSION PRINTING
+      - name: Retrieve project version
         id: gradle_version
         run: ./gradlew properties -q | grep "version:" | awk '{print $2}'
 
+      #  -- VERSION RETRIEVAL
       - name: Set release version
         run: echo "RELEASE_VERSION=$(cat gradle.properties | grep version= | cut -d'=' -f2)" >> $GITHUB_ENV
 
@@ -88,6 +98,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # -- UPLOADING NAMING DEPENDENT JARS
       - name: Upload JAR to release
         uses: actions/upload-release-asset@v1
         with:
