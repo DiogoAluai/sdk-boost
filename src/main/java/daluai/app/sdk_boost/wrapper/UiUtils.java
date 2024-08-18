@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 /**
  * Utility functions for UI.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings("all")
 public final class UiUtils {
 
     private UiUtils() {
@@ -48,8 +48,7 @@ public final class UiUtils {
     /**
      * Clear focus from components of given class, whenever user clicks away.
      * Usage example: override dispatchTouchEvent and call this function before returning super.
-     * <p/>
-     * Original source code <a href="https://stackoverflow.com/questions/4828636/edittext-clear-focus-on-touch-outside">here</a>
+     * Original source code https://stackoverflow.com/questions/4828636/edittext-clear-focus-on-touch-outside
      */
     public static void clearFocusIfClickedAway(Activity activity, MotionEvent event, Class<?> componentClass) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
