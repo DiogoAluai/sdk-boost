@@ -1,5 +1,5 @@
-# Logger
-Wrapper of Android logger that removes the hassle of specifying the tag repeatedly.
+# Sdk Boost for Android App development
+Helper classes and wrappers of Android SDK that reduce needless code repetition, improving development speed and happiness.
 
 # Adding dependency - gradle
 Add [jitpack](https://jitpack.io/#DiogoAluai/sdk-boost/) dependency resolution in `settings.gradle.kts`:
@@ -33,3 +33,5 @@ dependencies {
 }
 ```
 
+# Todo
+Make an effort to be as amazing as the reader.
